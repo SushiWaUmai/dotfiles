@@ -1,0 +1,6 @@
+*.o
+*.orig
+config.h
+
+.ccls-cache
+.vscode

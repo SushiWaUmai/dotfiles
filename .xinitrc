@@ -13,9 +13,7 @@
 # xrandr --auto
 
 # dwm status bar
-while $(xsetroot -name "$(date +'%a. %d %b. %Y - %H:%M:%S')" 1>&- 2>&-); do
-  sleep 1
-done &
+exec slstatus &
 
 ~/.fehbg &
 

@@ -64,6 +64,8 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
-	{ datetime, "%s",           "%a. %d %b. %Y - %H:%M:%S" },
+	/* function     format          argument */
+  { wifi_essid,   "[%s",          "wlan0" },
+  { wifi_perc,    "%3s%%] ",      "wlan0" },
+	{ datetime,     "%s",           "%a. %d %b. %Y - %H:%M:%S" },
 };

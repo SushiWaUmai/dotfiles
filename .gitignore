@@ -1,5 +1,6 @@
 *.o
 *.orig
+*.rej
 config.h
 
 .ccls-cache

@@ -10,9 +10,9 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
-static const int showbar            = 1;     /* 0 means no bar */
-static const int topbar             = 1;     /* 0 means bottom bar */
+static const int showsystray        = 1;        /* 0 means no systray */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const char *fonts[]          = { "MesloLGS Nerd Font Mono:size=10" };
@@ -35,6 +35,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -63,7 +64,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

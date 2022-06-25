@@ -70,7 +70,7 @@ statusstr(size_t * len, char * status)
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
   *len += snprintf(status + *len, MAXLEN - *len,    " %s | "               , keymap()); 
-	*len += snprintf(status + *len, MAXLEN - *len,    " %s %2s%% | "         , wifi_essid("wlan0"), wifi_perc("wlan0"));
+	*len += snprintf(status + *len, MAXLEN - *len,    " %s %3s%% | "         , wifi_essid("wlan0"), wifi_perc("wlan0"));
 	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));
   *len += snprintf(status + *len, MAXLEN - *len,    "  ");
 }

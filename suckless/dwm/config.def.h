@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include "dwm.h"
-#include "themes/arcdark.h"
+#include "themes/nord.h"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -10,8 +10,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
-static const char *fonts[]          = { "MesloLGS Nerd Font:size=10" };
-static const char dmenufont[]       = "MesloLGS Nerd Font:size=10";
+static const char *fonts[]          = { "MesloLGS Nerd Font:size=12" };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -53,7 +52,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
 static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
 
 static Key keys[] = {

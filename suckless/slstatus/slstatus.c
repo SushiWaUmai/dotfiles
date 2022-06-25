@@ -49,10 +49,9 @@ main(int argc, char *argv[])
 {
 	struct sigaction act;
 	struct timespec start, current, diff, intspec, wait;
-	size_t i, len;
-	int sflag, ret;
+	size_t len;
+	int sflag;
 	char status[MAXLEN];
-	const char *res;
 
 	sflag = 0;
 	ARGBEGIN {
@@ -87,16 +86,10 @@ main(int argc, char *argv[])
 		}
 
 		status[0] = '\0';
-		for (i = len = 0; i < LEN(args); i++) {
-			if (!(res = args[i].func(args[i].args))) {
-				res = unknown_str;
-			}
-			if ((ret = esnprintf(status + len, sizeof(status) - len,
-			                    args[i].fmt, res)) < 0) {
-				break;
-			}
-			len += ret;
-		}
+ 		statusstr(&len, status);
+ 		if (len >= sizeof(status)) {
+ 			status[sizeof(status) - 1] = '\0';
+    }
 
 		if (sflag) {
 			puts(status);

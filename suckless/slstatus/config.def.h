@@ -63,9 +63,13 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
-static const struct arg args[] = {
-	/* function     format          argument */
-  { wifi_essid,   "[%s",          "wlan0" },
-  { wifi_perc,    "%3s%%] ",      "wlan0" },
-	{ datetime,     "%s",           "%a. %d %b. %Y - %H:%M:%S" },
-};
+
+static void
+statusstr(size_t * len, char * status)
+{
+  *len = 0;
+	*len += snprintf(status + *len, MAXLEN - *len,    "[%s "            , wifi_essid("wlan0"));
+	*len += snprintf(status + *len, MAXLEN - *len,    "%2s%%] "         , wifi_perc("wlan0"));
+	*len += snprintf(status + *len, MAXLEN - *len,    "%s "             , datetime("%a. %d %b. %Y - %H:%M:%S"));
+  *len += snprintf(status + *len, MAXLEN - *len,    "  ");
+}

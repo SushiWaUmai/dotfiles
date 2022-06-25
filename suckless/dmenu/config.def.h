@@ -7,7 +7,7 @@ static const unsigned int alpha = 0xf0;
 static int min_width = 750;                    /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"MesloLGS Nerd Font:size=12"
+	"MesloLGS Nerd Font Mono:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {

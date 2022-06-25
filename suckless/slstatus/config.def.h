@@ -4,7 +4,7 @@
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "n/a";
+static const char unknown_str[] = "";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -68,8 +68,10 @@ static void
 statusstr(size_t * len, char * status)
 {
   *len = 0;
-	*len += snprintf(status + *len, MAXLEN - *len,    "[%s "            , wifi_essid("wlan0"));
-	*len += snprintf(status + *len, MAXLEN - *len,    "%2s%%] "         , wifi_perc("wlan0"));
-	*len += snprintf(status + *len, MAXLEN - *len,    "%s "             , datetime("%a. %d %b. %Y - %H:%M:%S"));
+	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
+  *len += snprintf(status + *len, MAXLEN - *len,    " %s | "               , keymap()); 
+	*len += snprintf(status + *len, MAXLEN - *len,    " %s %2s%% | "         , wifi_essid("wlan0"), wifi_perc("wlan0"));
+	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));
   *len += snprintf(status + *len, MAXLEN - *len,    "  ");
 }
+

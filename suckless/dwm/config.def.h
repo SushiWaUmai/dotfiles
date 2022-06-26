@@ -14,8 +14,8 @@ static const int sidepad            = 10;       /* horizontal padding of bar */
 static const char *fonts[]          = { "MesloLGS Nerd Font:size=12" };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tagsalt[] = { "T", "B", "U", "G", "P", "F", "M", "C", "R" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tagsalt[] = { "", "", "", "", "", "", "", "", "" };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const Rule rules[] = {
@@ -37,9 +37,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "|  0 |",      tile },    /* first entry is default */
+	{ "|  |",      NULL },    /* no layout function means floating behavior */
+	{ "|  0 |",    monocle },
 };
 
 /* key definitions */

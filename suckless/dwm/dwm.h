@@ -39,7 +39,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -111,6 +111,7 @@ struct Monitor {
 	Monitor *next;
 	Window barwin;
 	const Layout *lt[2];
+	unsigned int alttag;
 };
 
 typedef struct {
@@ -158,6 +159,7 @@ void grabbuttons(Client *c, int focused);
 void grabkeys(void);
 void incnmaster(const Arg *arg);
 void keypress(XEvent *e);
+void keyrelease(XEvent *e);
 void killclient(const Arg *arg);
 void manage(Window w, XWindowAttributes *wa);
 void mappingnotify(XEvent *e);
@@ -192,6 +194,7 @@ void spawn(const Arg *arg);
 void tag(const Arg *arg);
 void tagmon(const Arg *arg);
 void tile(Monitor *);
+void togglealttag();
 void togglebar(const Arg *arg);
 void togglefloating(const Arg *arg);
 void toggletag(const Arg *arg);

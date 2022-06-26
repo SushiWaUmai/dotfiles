@@ -14,6 +14,8 @@ static const char *fonts[]          = { "MesloLGS Nerd Font Mono:size=12" };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tagsalt[] = { "T", "B", "U", "G", "P", "F", "M", "C", "R" };
+static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -55,16 +57,26 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
 static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
 
+#include "shift-tools.c"
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_o,      shiftviewclients,    { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_o,	     shiftview,         { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_i,	     shiftview,         { .i = -1 } },
+	{ MODKEY,	                      XK_i,      shiftviewclients,    { .i = -1 } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,		          XK_h,      shiftboth,      { .i = -1 }	},
+	{ MODKEY|ControlMask,		        XK_h,      shiftswaptags,  { .i = -1 }	},
+	{ MODKEY|ControlMask,		        XK_l,      shiftswaptags,  { .i = +1 }	},
+	{ MODKEY|ShiftMask,             XK_l,      shiftboth,      { .i = +1 }	},
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -80,6 +92,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_a,      togglealttag,   {0} },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },

@@ -13,12 +13,5 @@
 # xrandr --auto
 
 # dwm status bar
-exec slstatus &
-xautolock -time 10 -locker slock &
-
-~/.fehbg &
-
-picom -b
-
 exec dwm
 

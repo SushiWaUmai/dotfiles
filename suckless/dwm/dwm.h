@@ -12,6 +12,7 @@
 #include <limits.h>
 #include <stdint.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
 #include <X11/keysym.h>
@@ -196,6 +197,7 @@ void resizeclient(Client *c, int x, int y, int w, int h);
 void resizemouse(const Arg *arg);
 void restack(Monitor *m);
 void run(void);
+void runautostart(void);
 void scan(void);
 int sendevent(Client *c, Atom proto);
 void sendmon(Client *c, Monitor *m);

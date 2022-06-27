@@ -7,14 +7,14 @@
 #define ICONSPACING 5 /* space between icon and title */
 
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const int gappx     = 5;                 /* gaps between windows */
+static const int gappx              = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 8;        /* 2 is the default spacing around the bar's font */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
-static const char *fonts[]          = { "MesloLGS Nerd Font:size=14" };
+static const char *fonts[]          = {"MesloLGS Nerd Font:size=14"};
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
@@ -58,8 +58,32 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "font",               STRING,  &fonts },
+		{ "normbgcolor",        STRING,  &normbgcolor },
+		{ "normbordercolor",    STRING,  &normbordercolor },
+		{ "normfgcolor",        STRING,  &normfgcolor },
+		{ "selbgcolor",         STRING,  &selbgcolor },
+		{ "selbordercolor",     STRING,  &selbordercolor },
+		{ "selfgcolor",         STRING,  &selfgcolor },
+		{ "urgbgcolor",         STRING,  &urgbgcolor },
+		{ "urgbordercolor",     STRING,  &urgbordercolor },
+		{ "urgfgcolor",         STRING,  &urgfgcolor },
+		{ "borderpx",          	INTEGER, &borderpx },
+		{ "snap",          		  INTEGER, &snap },
+		{ "showbar",          	INTEGER, &showbar },
+		{ "topbar",          	  INTEGER, &topbar },
+		{ "nmaster",          	INTEGER, &nmaster },
+		{ "resizehints",       	INTEGER, &resizehints },
+		{ "mfact",      	 	    FLOAT,   &mfact },
+};
+
 
 #include "shift-tools.c"
 

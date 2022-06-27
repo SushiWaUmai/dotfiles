@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <limits.h>
+#include <stdint.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
@@ -40,7 +42,7 @@
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
-enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+enum { NetSupported, NetWMName, NetWMIcon, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
@@ -73,6 +75,7 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	unsigned int icw, ich; Picture icon;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -152,6 +155,7 @@ void focusin(XEvent *e);
 void focusmon(const Arg *arg);
 void focusstack(const Arg *arg);
 Atom getatomprop(Client *c, Atom prop);
+Picture geticonprop(Window w, unsigned int *icw, unsigned int *ich);
 int getrootptr(int *x, int *y);
 long getstate(Window w);
 int gettextprop(Window w, Atom atom, char *text, unsigned int size);
@@ -199,6 +203,7 @@ void togglebar(const Arg *arg);
 void togglefloating(const Arg *arg);
 void toggletag(const Arg *arg);
 void toggleview(const Arg *arg);
+void freeicon(Client *c);
 void unfocus(Client *c, int setfocus);
 void unmanage(Client *c, int destroyed);
 void unmapnotify(XEvent *e);
@@ -210,6 +215,7 @@ void updatenumlockmask(void);
 void updatesizehints(Client *c);
 void updatestatus(void);
 void updatetitle(Client *c);
+void updateicon(Client *c);
 void updatewindowtype(Client *c);
 void updatewmhints(Client *c);
 void warp(const Client *c);

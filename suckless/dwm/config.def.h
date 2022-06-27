@@ -3,6 +3,9 @@
 #include "themes/nord.h"
 
 /* appearance */
+#define ICONSIZE 16   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
+
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const int gappx     = 5;                 /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */

@@ -3,13 +3,7 @@
 #include "themes/nord.h"
 
 /* appearance */
-static const char font[]        = "MesloLGS Nerd Font Mono:size=12";
-// static const char* normbgcolor  = "#222222";
-// static const char* normfgcolor  = "#cccccc";
-// static const char* selbgcolor   = "#555555";
-// static const char* selfgcolor   = "#ffffff";
-// static const char* urgbgcolor   = "#111111";
-// static const char* urgfgcolor   = "#cc0000";
+static char font[]        = "MesloLGS Nerd Font Mono:size=12";
 static const char before[]      = "<";
 static const char after[]       = ">";
 static const char titletrim[]   = "...";
@@ -35,6 +29,19 @@ static Bool npisrelative  = False;
                 p, winid, NULL \
         } \
 }
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "font",         STRING,  &font },
+		{ "normbgcolor",  STRING,  &normbgcolor },
+		{ "normfgcolor",  STRING,  &normfgcolor },
+		{ "selbgcolor",   STRING,  &selbgcolor },
+		{ "selfgcolor",   STRING,  &selfgcolor },
+		{ "urgbgcolor",   STRING,  &urgbgcolor },
+		{ "urgfgcolor",   STRING,  &urgfgcolor },
+};
 
 #define MODKEY ControlMask
 static Key keys[] = {

@@ -718,13 +718,8 @@ setup(void)
 	int a, di, n, area = 0;
 #endif
 	/* init appearance */
-	for (j = 0; j < SchemeLast; j++) {
+  for (j = 0; j < SchemeLast; j++)
 		scheme[j] = drw_scm_create(drw, colors[j], alphas[i], 2);
-	}
-	for (j = 0; j < SchemeOut; ++j) {
-		for (i = 0; i < 2; ++i)
-			free((void*)colors[j][i]);
-	}
 
 	clip = XInternAtom(dpy, "CLIPBOARD",   False);
 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
@@ -774,9 +769,9 @@ setup(void)
 #endif
 	{
 		if (!XGetWindowAttributes(dpy, parentwin, &wa))
-			die("could not get embedding window attributes: 0x%lx",
-			    parentwin);
- 		if (centered) {
+			die("could not get embedding window attributes: 0x%lx", parentwin);
+
+    if (centered) {
  			mw = MIN(MAX(max_textw() + promptw, min_width), wa.width);
  			x = (wa.width  - mw) / 2;
  			y = (wa.height - mh) / 2;
@@ -937,6 +932,7 @@ main(int argc, char *argv[])
 	xinitvisual();
 	drw = drw_create(dpy, screen, root, wa.width, wa.height, visual, depth, cmap);
   readxresources();
+  
   /* Now we check whether to override xresources with commandline parameters */
   if (tempfonts)
      fonts[0] = strdup(tempfonts);
@@ -949,10 +945,11 @@ main(int argc, char *argv[])
   if (colortemp[3])
      colors[SchemeSel][ColFg]  = strdup(colortemp[3]);
 
-  if (!drw_fontset_create(drw, (const char**)fonts, LENGTH(fonts)))
+  if (!drw_fontset_create(drw, fonts, LENGTH(fonts))) {
     die("no fonts could be loaded.");
-
-	free((void*)fonts[0]);
+    free((void*)fonts[0]);
+  }
+	
 	lrpad = drw->fonts->h;
 
 #ifdef __OpenBSD__

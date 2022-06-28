@@ -1,5 +1,3 @@
-#!/bin/sh -e
+#!/bin/sh
 
-sel=$(slop -f "-i %i -g %g")
-shotgun $sel "$1"
-
+shotgun -g $(dimon) "${HOME}/img/screenshot-$(date +%Y-%m-%d-%H_%M-%S).png"

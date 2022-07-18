@@ -8,6 +8,7 @@
 	#include <limits.h>
 	#include <stdint.h>
 	#include <unistd.h>
+  #include <dirent.h>
 
 	static const char *
 	pick(const char *bat, const char *f1, const char *f2, char *path,
@@ -43,6 +44,39 @@
 		return bprintf("%d", perc);
 	}
 
+  int
+  battery_perc_avg() {
+    DIR *dir;
+    if ((dir = opendir("/sys/class/power_supply/")) != NULL) {
+      struct dirent *ent;
+      int sum, perc, count;
+      sum = perc = count = 0;
+      static char path[PATH_MAX];
+
+      while (((ent = readdir(dir)) != NULL)) {
+        const char *name = ent->d_name;
+        if (strncmp(name, "BAT", 3) == 0) {
+          memset(path, 0, PATH_MAX);
+
+          if (esnprintf(path, sizeof(path),
+                        "/sys/class/power_supply/%s/capacity", name) < 0 ||
+              pscanf(path, "%d", &perc) != 1) {
+            continue;
+          }
+
+          sum += perc;
+          count++;
+        }
+      }
+
+      closedir(dir);
+
+      return sum / count;
+    } else {
+       return -1;
+    }
+  }
+  
 	const char *
 	battery_state(const char *bat)
 	{

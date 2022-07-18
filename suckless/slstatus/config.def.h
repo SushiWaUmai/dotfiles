@@ -67,8 +67,30 @@ static const char unknown_str[] = "";
 static void
 statusstr(size_t * len, char * status)
 {
+  int percent = battery_perc_avg();
+  int state = percent / (100 / 5);
+  char* state_str = NULL;
+  switch (state) {
+  case 0:
+    state_str = "";
+    break;
+  case 1:
+    state_str = "";
+    break;
+  case 2:
+    state_str = "";
+    break;
+  case 3:
+    state_str = "";
+    break;
+  case 4:
+    state_str = "";
+    break;
+  }
+
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d% | "            , state_str, percent);
   *len += snprintf(status + *len, MAXLEN - *len,    " %s | "               , keymap()); 
 	*len += snprintf(status + *len, MAXLEN - *len,    " %s %3s%% | "         , wifi_essid("wlan0"), wifi_perc("wlan0"));
 	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));

@@ -64,35 +64,62 @@ static const char unknown_str[] = "";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 
+char battery_icons[5][4] = {
+  "",
+  "",
+  "",
+  "",
+  ""
+};
+
+char charging_icons[5][4] = {
+  "",
+  "",
+  "",
+  "",
+  ""
+};
+
+void to_upper(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] -= 32;
+    }
+}
+
 static void
 statusstr(size_t * len, char * status)
 {
-  int percent = battery_perc_avg();
-  int state = percent / (100 / 5);
-  char* state_str = NULL;
-  switch (state) {
-  case 0:
-    state_str = "";
-    break;
-  case 1:
-    state_str = "";
-    break;
-  case 2:
-    state_str = "";
-    break;
-  case 3:
-    state_str = "";
-    break;
-  case 4:
-    state_str = "";
-    break;
-  }
-
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d% | "            , state_str, percent);
-  *len += snprintf(status + *len, MAXLEN - *len,    " %s | "               , keymap()); 
-	*len += snprintf(status + *len, MAXLEN - *len,    " %s %3s%% | "         , wifi_essid("wlan0"), wifi_perc("wlan0"));
+  
+  int percent = battery_perc_avg();
+  int state = battery_state_any();
+  char* state_str;
+
+  int battery_icons_idx = percent / (100 / 5) - 1;
+  if (state) {
+    state_str = charging_icons[battery_icons_idx];
+  } else {
+    state_str = battery_icons[battery_icons_idx];
+  }
+
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %3d% | "            , state_str, percent);
+
+  char *keyboard = keymap();
+  to_upper(keyboard);
+
+  *len += snprintf(status + *len, MAXLEN - *len,    "  %s | "               , keyboard); 
+
+  char *ssid = wifi_essid("wlan0");
+  char *ssid_perc = wifi_perc("wlan0");
+
+  if (ssid) {
+    *len += snprintf(status + *len, MAXLEN - *len,  "  %s %3s%% | "         , ssid, ssid_perc);
+  }
+  else {
+    *len += snprintf(status + *len, MAXLEN - *len,  "  NOT FOUND | ");
+  }
+
 	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));
   *len += snprintf(status + *len, MAXLEN - *len,    "  ");
 }

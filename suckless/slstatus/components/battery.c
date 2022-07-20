@@ -107,6 +107,26 @@
 		return (i == LEN(map)) ? "?" : map[i].symbol;
 	}
 
+  int
+  battery_state_any() {
+    DIR *dir;
+    if ((dir = opendir("/sys/class/power_supply/")) != NULL) {
+      struct dirent *ent;
+
+      while (((ent = readdir(dir)) != NULL)) {
+        const char *name = ent->d_name;
+        if (strncmp(name, "BAT", 3) == 0) {
+          const char *state = battery_state(name);
+          if (strncmp(state, "+", 1) == 0) {
+            return 1;
+          }
+        }
+      }
+    }
+
+    return 0;
+  }
+
 	const char *
 	battery_remaining(const char *bat)
 	{

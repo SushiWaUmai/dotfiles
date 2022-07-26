@@ -40,7 +40,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "|  0 |",      tile },    /* first entry is default */
+	{ "|  0 |",    tile },    /* first entry is default */
 	{ "|  |",      NULL },    /* no layout function means floating behavior */
 	{ "|  0 |",    monocle },
 };
@@ -105,10 +105,10 @@ static Key keys[] = {
 	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,          { .f = -0.05} },
-	{ MODKEY|ShiftMask,		          XK_h,      shiftboth,         { .i = -1 }	},
-	{ MODKEY|ControlMask,		        XK_h,      shiftswaptags,     { .i = -1 }	},
-	{ MODKEY|ControlMask,		        XK_l,      shiftswaptags,     { .i = +1 }	},
-	{ MODKEY|ShiftMask,             XK_l,      shiftboth,         { .i = +1 }	},
+	{ MODKEY|ControlMask,		        XK_h,      shiftboth,         { .i = -1 }	},
+	{ MODKEY|ShiftMask,		          XK_h,      shiftswaptags,     { .i = -1 }	},
+	{ MODKEY|ShiftMask,		          XK_l,      shiftswaptags,     { .i = +1 }	},
+	{ MODKEY|ControlMask,           XK_l,      shiftboth,         { .i = +1 }	},
 	{ MODKEY,                       XK_l,      setmfact,          { .f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,              { 0 } },
 	{ MODKEY,                       XK_Tab,    view,              { 0 } },
@@ -117,13 +117,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,         { .v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,         { .v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,         { 0 } },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating,    { 0 } },
+	{ MODKEY|ControlMask,           XK_space,  togglefloating,    { 0 } },
 	{ MODKEY,                       XK_0,      view,              { .ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,               { .ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,          { .i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,          { .i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,            { .i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,            { .i = +1 } },
+	{ MODKEY|ControlMask,           XK_comma,  tagmon,            { .i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, tagmon,            { .i = +1 } },
 	{ MODKEY,                       XK_a,      togglealttag,      { 0 } },
 	{ MODKEY,                       XK_minus,  setgaps,           { .i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,           { .i = +5 } },

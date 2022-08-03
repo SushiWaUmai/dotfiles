@@ -60,8 +60,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
-static const char *screensnap[] = { "~/.dwm/screensnap.sh", NULL };
-static const char *screenshot[] = { "~/.dwm/screenshot.sh", NULL };
 
 /*
  * Xresources preferences to load at startup
@@ -100,8 +98,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,         { 0 } },
 	{ MODKEY,                       XK_j,      focusstack,        { .i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,        { .i = -1 } },
-  { MODKEY|ShiftMask,             XK_s,      spawn,             { .v = screensnap } }, 
-  { MODKEY,                       XK_s,      spawn,             { .v = screenshot } }, 
+  { MODKEY|ShiftMask,             XK_s,      spawn,             SHCMD("~/.dwm/screensnap.sh") }, 
+  { MODKEY,                       XK_s,      spawn,             SHCMD("~/.dwm/screenshot.sh") }, 
 	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,          { .f = -0.05} },

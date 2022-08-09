@@ -12,6 +12,17 @@
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 # xrandr --auto
 
-# dwm status bar
+# # For mozc
+# fcitx5 &
+#
+# # fcitx
+# export XMODIFIERS=@im=fcitx
+# export QT_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
+
+# auto mount
+udiskie &
+
+# dwm (suckless window manager)
 exec dwm
 

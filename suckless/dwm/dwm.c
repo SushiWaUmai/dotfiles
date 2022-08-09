@@ -1683,6 +1683,12 @@ tag(const Arg *arg)
 	}
 }
 
+void tagandfocusmon(const Arg *arg)
+{
+  tagmon(arg);
+  focusmon(arg);
+}
+
 void
 tagmon(const Arg *arg)
 {

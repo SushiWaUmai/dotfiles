@@ -213,6 +213,7 @@ void showhide(Client *c);
 void sigchld(int unused);
 void spawn(const Arg *arg);
 void tag(const Arg *arg);
+void tagandfocusmon(const Arg *arg);
 void tagmon(const Arg *arg);
 void tile(Monitor *);
 void togglealttag();

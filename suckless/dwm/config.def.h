@@ -65,6 +65,7 @@ static const char *downvol[] = { "amixer", "set", "Master", "4%-", NULL };
 static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 static const char *upbr[] = { "brightnessctl", "set", "5%+" , NULL };
 static const char *downbr[] = { "brightnessctl", "set", "5%-" , NULL };
+static const char *lock[] = { "slock", NULL };
 
 /*
  * Xresources preferences to load at startup
@@ -147,6 +148,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  setgaps,           { .i = +5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,           { .i = 0  } },
 
+  { MODKEY|ShiftMask,             XK_l,      spawn,             { .v = lock }},
 	{ MODKEY|ShiftMask,             XK_q,      quit,              { 0 } },
 
 	TAGKEYS(                        XK_1,                         0)

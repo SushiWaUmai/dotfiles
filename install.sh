@@ -36,8 +36,8 @@ cd ../..
 
 # get the user name
 USERNAME=$(logname)
+ln -s ./.dwm /home/$USERNAME/
 cp -R ./.config /home/$USERNAME/
-cp -R ./.dwm /home/$USERNAME/
 cp -R ./.surf /home/$USERNAME/
 cp -R ./.wallpaper /home/$USERNAME/
 cp ./.xinitrc /home/$USERNAME/

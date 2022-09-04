@@ -122,6 +122,8 @@
           }
         }
       }
+
+      closedir(dir);
     }
 
     return 0;

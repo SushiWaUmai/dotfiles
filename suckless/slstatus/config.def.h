@@ -91,7 +91,7 @@ statusstr(size_t * len, char * status)
 {
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
-  
+
   int percent = battery_perc_avg();
   int state = battery_state_any();
   char* state_str;

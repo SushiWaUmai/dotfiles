@@ -180,8 +180,18 @@
 
 		return bprintf("%d", value);
 	}
+
+  int
+  vol_perc_amixer() {
+    const char *perc_str = run_command("/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"");
+    int perc = atoi(perc_str);
+    return perc;
+  }
+
 #else
 	#include <sys/soundcard.h>
+  #include <stdlib.h>
+  #include "../slstatus.h"
 
 	const char *
 	vol_perc(const char *card)
@@ -214,4 +224,11 @@
 
 		return bprintf("%d", v & 0xff);
 	}
+
+  int
+  vol_perc_amixer() {
+    const char *perc_str = run_command("/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"");
+    int perc = atoi(perc_str);
+    return perc;
+  }
 #endif

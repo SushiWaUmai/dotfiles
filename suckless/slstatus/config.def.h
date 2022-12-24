@@ -1,4 +1,8 @@
 /* See LICENSE file for copyright and license details. */
+#include "slstatus.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 /* interval between updates (in ms) */
 const unsigned int interval = 1000;
@@ -64,7 +68,7 @@ static const char unknown_str[] = "";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 
-char battery_icons[5][4] = {
+const char battery_icons[5][4] = {
   "",
   "",
   "",
@@ -72,7 +76,7 @@ char battery_icons[5][4] = {
   ""
 };
 
-char charging_icons[5][4] = {
+const char charging_icons[5][4] = {
   "",
   "",
   "",
@@ -80,47 +84,81 @@ char charging_icons[5][4] = {
   ""
 };
 
-void to_upper(char *str) {
+const char no_wifi_icon[] = "睊";
+const char wifi_icon[] = "直";
+
+const char volume_icons[3][4] = {
+  "",
+  "",
+  "",
+};
+
+const char brightness_icons[3][4] = {
+  "",
+  "",
+  "",
+};
+
+const char volume_muted_icon[] = "婢";
+const char keyboard_icon[] = "";
+const char kernel_icon[] = "";
+
+void to_upper(const char *str, char *to) {
     for (int i = 0; str[i] != '\0'; i++) {
-        str[i] -= 32;
+        to[i] = str[i] - 32;
     }
 }
 
 static void
 statusstr(size_t * len, char * status)
 {
+  int bat_perc_val = battery_perc_avg();
+  int state = battery_state_any();
+
+  int brightness_perc = brightnessctl_perc();
+  int vol_perc_val = vol_perc_amixer();
+
+  const char *nocapkeyboard = keymap();
+  static char keyboard[32];
+  memset(keyboard, 0, 32);
+  to_upper(nocapkeyboard, keyboard);
+
+  const char *ssid = wifi_essid("wlan0");
+  const char *ssid_perc = wifi_perc("wlan0");
+
+  const char* bat_state_str;
+  int battery_icons_idx = bat_perc_val / (100 / 5);
+  battery_icons_idx = battery_icons_idx > 4 ? 4 : battery_icons_idx;
+  if (state) {
+    bat_state_str = charging_icons[battery_icons_idx];
+  } else {
+    bat_state_str = battery_icons[battery_icons_idx];
+  }
+
+  int volume_icons_idx = vol_perc_val / (100 / 3);
+  volume_icons_idx = volume_icons_idx > 2 ? 2 : volume_icons_idx;
+  const char *vol_state_str = volume_icons[volume_icons_idx];
+
+  int brightness_icons_idx = brightness_perc / (100 / 3);
+  brightness_icons_idx = brightness_icons_idx > 2 ? 2 : brightness_icons_idx;
+  const char *brightness_state_str = brightness_icons[brightness_icons_idx];
+
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %3d%% | "           , bat_state_str, bat_perc_val);
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %s | "              , keyboard_icon, keyboard); 
 
-  int percent = battery_perc_avg();
-  int state = battery_state_any();
-  char* state_str;
-
-  int battery_icons_idx = percent / (100 / 5) - 1;
-  if (state) {
-    state_str = charging_icons[battery_icons_idx];
-  } else {
-    state_str = battery_icons[battery_icons_idx];
-  }
-
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %3d% | "            , state_str, percent);
-
-  char *keyboard = keymap();
-  to_upper(keyboard);
-
-  *len += snprintf(status + *len, MAXLEN - *len,    "  %s | "               , keyboard); 
-
-  char *ssid = wifi_essid("wlan0");
-  char *ssid_perc = wifi_perc("wlan0");
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , brightness_state_str, brightness_perc);
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , vol_state_str, vol_perc_val);
 
   if (ssid) {
-    *len += snprintf(status + *len, MAXLEN - *len,  "  %s %3s%% | "         , ssid, ssid_perc);
+    *len += snprintf(status + *len, MAXLEN - *len,  "%s %3s%% | "           , wifi_icon, ssid_perc);
   }
   else {
-    *len += snprintf(status + *len, MAXLEN - *len,  "  NOT FOUND | ");
+    *len += snprintf(status + *len, MAXLEN - *len,  "%s | "                 , no_wifi_icon);
   }
 
 	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));
-  *len += snprintf(status + *len, MAXLEN - *len,    "  ");
+  *len += snprintf(status + *len, MAXLEN - *len,    " %s "                  , kernel_icon);
 }
 

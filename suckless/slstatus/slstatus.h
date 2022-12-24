@@ -1,9 +1,16 @@
 /* See LICENSE file for copyright and license details. */
+#ifndef SLSTATUS_H
+#define SLSTATUS_H
 
 /* battery */
 const char *battery_perc(const char *);
 const char *battery_state(const char *);
 const char *battery_remaining(const char *);
+int battery_state_any();
+int battery_perc_avg();
+
+/* brightness */
+int brightnessctl_perc();
 
 /* cpu */
 const char *cpu_freq(void);
@@ -78,7 +85,10 @@ const char *uid(void);
 
 /* volume */
 const char *vol_perc(const char *card);
+int vol_perc_amixer();
 
 /* wifi */
 const char *wifi_perc(const char *interface);
 const char *wifi_essid(const char *interface);
+
+#endif // SLSTATUS_H

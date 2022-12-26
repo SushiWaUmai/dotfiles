@@ -1,6 +1,6 @@
 #!/bin/sh
 
-d="${HOME}/img/screenshot-$(date +%Y-%m-%d-%H_%M-%S).png"
+d="${HOME}/pics/screenshot-$(date +%Y-%m-%d-%H_%M-%S).png"
 sel=$(slop -f "-i %i -g %g")
 
 shotgun $sel $d

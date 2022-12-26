@@ -23,6 +23,6 @@
 # auto mount
 udiskie &
 
-# dwm (suckless window manager)
-exec dwm > ~/.dwm/dwm.log
+# dwm suckless (dynamic window manager)
+exec dwm
 

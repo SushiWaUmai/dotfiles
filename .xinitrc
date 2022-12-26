@@ -24,5 +24,5 @@
 udiskie &
 
 # dwm (suckless window manager)
-exec dwm
+exec dwm > ~/.dwm/dwm.log
 

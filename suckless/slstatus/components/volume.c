@@ -231,4 +231,11 @@
     int perc = atoi(perc_str);
     return perc;
   }
+
+  int
+  vol_muted_amixer() {
+    const char *muted_str = run_command("/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\b(on|off)\\b'\"");
+    int muted = strcmp(muted_str, "off") == 0;
+    return muted;
+  }
 #endif

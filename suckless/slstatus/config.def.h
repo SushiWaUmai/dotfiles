@@ -118,6 +118,8 @@ statusstr(size_t * len, char * status)
   int brightness_perc = brightnessctl_perc();
   int vol_perc_val = vol_perc_amixer();
 
+  int vol_muted = vol_muted_amixer();
+
   const char *nocapkeyboard = keymap();
   static char keyboard[32];
   memset(keyboard, 0, 32);
@@ -137,7 +139,13 @@ statusstr(size_t * len, char * status)
 
   int volume_icons_idx = vol_perc_val / (100 / 3);
   volume_icons_idx = volume_icons_idx > 2 ? 2 : volume_icons_idx;
-  const char *vol_state_str = volume_icons[volume_icons_idx];
+  const char *vol_state_str;
+  if (vol_muted) {
+    vol_state_str = volume_muted_icon;
+  }
+  else {
+    vol_state_str = volume_icons[volume_icons_idx];
+  }
 
   int brightness_icons_idx = brightness_perc / (100 / 3);
   brightness_icons_idx = brightness_icons_idx > 2 ? 2 : brightness_icons_idx;
@@ -146,7 +154,7 @@ statusstr(size_t * len, char * status)
   *len = 0;
 	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
   *len += snprintf(status + *len, MAXLEN - *len,    "%s  %3d%% | "           , bat_state_str, bat_perc_val);
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %s | "              , keyboard_icon, keyboard); 
+  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %s | "              , keyboard_icon, keyboard);
 
   *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , brightness_state_str, brightness_perc);
   *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , vol_state_str, vol_perc_val);

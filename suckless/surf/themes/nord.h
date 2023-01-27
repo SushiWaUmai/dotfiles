@@ -1,0 +1,5 @@
+#define NORM_FG_COLOR "#88C0D0"
+#define NORM_BG_COLOR "#2E3440"
+
+#define SEL_FG_COLOR "#D08770"
+#define SEL_BG_COLOR "#4C566A"

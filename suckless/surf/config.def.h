@@ -1,3 +1,5 @@
+#include "themes/nord.h"
+
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
@@ -71,7 +73,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
              "prop=\"$(printf '%b' \"$(xprop -id $1 "r" " \
              "| sed -e 's/^"r"(UTF8_STRING) = \"\\(.*\\)\"/\\1/' " \
              "      -e 's/\\\\\\(.\\)/\\1/g')\" " \
-             "| dmenu -p '"p"' -w $1)\" " \
+             "| dmenu -p '"p"' -nb '"NORM_BG_COLOR"' -nf '"NORM_FG_COLOR"' -sb '"SEL_BG_COLOR"' -sf '"SEL_FG_COLOR"' -w $1)\" " \
              "&& xprop -id $1 -f "s" 8u -set "s" \"$prop\"", \
              "surf-setprop", winid, NULL \
         } \

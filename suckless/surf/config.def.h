@@ -10,6 +10,8 @@ static char *cookiefile     = "~/.surf/cookies.txt";
 static char *scriptfiles[]  = {
 	"~/.surf/script.js",
 };
+static char *dldir          = "~/dl/";
+static char *dlstatus       = "~/.surf/dlstatus/";
 
 /* Webkit default features */
 /* Highest priority value will be used.
@@ -81,13 +83,12 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         } \
 }
 
-/* DOWNLOAD(URI, referer) */
-#define DOWNLOAD(u, r) { \
+#define DLSTATUS { \
         .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
-             "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
-             " -e \"$3\" \"$4\"; read", \
-             "surf-download", useragent, cookiefile, r, u, NULL \
-        } \
+            "while true; do cat $1/* 2>/dev/null || echo \"no downloads\";"\
+            "A=; read A; "\
+            "if [ $A = \"clean\" ]; then rm $1/*; fi; clear; done",\
+            "surf-dlstatus", dlstatus, NULL } \
 }
 
 /* PLUMB(URI) */
@@ -188,6 +189,9 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_t,      toggle,     { .i = StrictTLS } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_d,      toggle,     { .i = DarkMode } },
+
+  /* download-console */
+  { MODKEY,                GDK_KEY_d,      spawndls,   { 0 } },
 };
 
 /* button definitions */

@@ -47,7 +47,7 @@ static Parameter defconfig[ParameterLast] = {
 	[ScrollBars]          =       { { .i = 1 },     },
 	[ShowIndicators]      =       { { .i = 1 },     },
 	[SiteQuirks]          =       { { .i = 1 },     },
-	[SmoothScrolling]     =       { { .i = 0 },     },
+	[SmoothScrolling]     =       { { .i = 1 },     },
 	[SpellChecking]       =       { { .i = 0 },     },
 	[SpellLanguages]      =       { { .v = ((char *[]){ "en_US", NULL }) }, },
 	[StrictTLS]           =       { { .i = 1 },     },
@@ -153,9 +153,7 @@ static Key keys[] = {
 	/* vertical and horizontal scrolling, in viewport percentage */
 	{ MODKEY,                GDK_KEY_j,      scrollv,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_k,      scrollv,    { .i = -10 } },
-	{ MODKEY,                GDK_KEY_b,      scrollv,    { .i = -10000 } },
 	{ MODKEY,                GDK_KEY_space,  scrollv,    { .i = +10000 } },
-	{ MODKEY,                GDK_KEY_f,      scrollv,    { .i = +10000 } },
   { MODKEY,                GDK_KEY_l,      scrollh,   { .i = +10 } },
   { MODKEY,                GDK_KEY_h,      scrollh,   { .i = -10 } },
 

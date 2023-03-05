@@ -17,7 +17,7 @@ static const int sidepad            = 10;       /* horizontal padding of bar */
 static const char *fonts[]          = {"MesloLGS Nerd Font:size=14"};
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 static const char *tagsalt[] = { "", "", "", "", "", "", "", "", "" };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
@@ -113,8 +113,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,        { .i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,        { .i = -1 } },
 
-  { MODKEY|ShiftMask,             XK_s,      spawn,             SHCMD("~/.dwm/screensnap.sh") }, 
-  { MODKEY,                       XK_s,      spawn,             SHCMD("~/.dwm/screenshot.sh") }, 
+  { MODKEY|ShiftMask,             XK_s,      spawn,             SHCMD("~/.dwm/screensnap.sh") },
+  { MODKEY,                       XK_s,      spawn,             SHCMD("~/.dwm/screenshot.sh") },
 
 	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
@@ -178,4 +178,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

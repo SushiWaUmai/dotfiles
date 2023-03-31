@@ -14,13 +14,9 @@ static const char urgfgcolor[] = "#8FBCBB";
 static const char urgbgcolor[] = "#88C0D0";
 static const char urgbordercolor[] = "#88C0D0";
 
-/* static const char status_fg[] = "#B48EAD"; */
-
 static const char *colors[][3]      = {
-
     /*                  fg            bg             border                         */
     [SchemeNorm]    = { normfgcolor,  normbgcolor,   normbordercolor }, // unfocused wins
     [SchemeSel]     = { selfgcolor,   selbgcolor,    selbordercolor },  // the focused win
     [SchemeUrg]     = { urgfgcolor,   urgbgcolor,    urgbordercolor },
- /*   [SchemeStatus]  = { status_fg,   norm_bg,   sel_fg }, // Statusbar right {text,background,not used but cannot be empty} */
 };

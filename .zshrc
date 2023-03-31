@@ -23,6 +23,7 @@ if ! zgenom saved; then
   zgenom ohmyzsh
 	zgenom ohmyzsh plugins/git
 	zgenom ohmyzsh plugins/gh
+	zgenom ohmyzsh plugins/tmux
 	zgenom ohmyzsh plugins/sudo
 
 	zgenom load romkatv/powerlevel10k powerlevel10k

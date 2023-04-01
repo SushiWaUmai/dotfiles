@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
     [SchemeNorm]    			= { normfgcolor,  normbgcolor,   normbordercolor }, // unfocused wins
     [SchemeSel]     			= { selfgcolor,   selbgcolor,    selbordercolor },  // the focused win
     [SchemeUrg]     			= { urgfgcolor,   urgbgcolor,    urgbordercolor },
-    [SchemeTitleBarNorm]  = { title_color,  normbgcolor,   normbordercolor },
-    [SchemeTitleBarSel]   = { title_color,  selbgcolor,    selbordercolor },
+    [SchemeTitleBarNorm]  = { title_color,  normbgcolor,   bar_border },
+    [SchemeTitleBarSel]   = { title_color,  selbgcolor,    bar_border },
  /*   [SchemeStatus]  = { status_fg,   norm_bg,   sel_fg }, // Statusbar right {text,background,not used but cannot be empty} */
 };

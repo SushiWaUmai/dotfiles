@@ -1871,6 +1871,12 @@ updatebars(void)
 		m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, m->ww - 2 * sp, bh, 0, DefaultDepth(dpy, screen),
 				CopyFromParent, DefaultVisual(dpy, screen),
 				CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
+
+		XWindowChanges wc;
+		wc.border_width = borderpx * 2;
+		XConfigureWindow(dpy, m->barwin, CWBorderWidth, &wc);
+		XSetWindowBorder(dpy, m->barwin, scheme[SchemeTitleBarSel][ColBorder].pixel);
+
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
 		XMapRaised(dpy, m->barwin);
 		XSetClassHint(dpy, m->barwin, &ch);

@@ -1873,7 +1873,7 @@ updatebars(void)
 				CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
 
 		XWindowChanges wc;
-		wc.border_width = borderpx * 2;
+		wc.border_width = borderpx;
 		XConfigureWindow(dpy, m->barwin, CWBorderWidth, &wc);
 		XSetWindowBorder(dpy, m->barwin, scheme[SchemeTitleBarSel][ColBorder].pixel);
 

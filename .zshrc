@@ -25,6 +25,7 @@ if ! zgenom saved; then
 	zgenom ohmyzsh plugins/gh
 	zgenom ohmyzsh plugins/tmux
 	zgenom ohmyzsh plugins/thefuck
+	zgenom ohmyzsh plugins/web-search
 
 	zgenom load romkatv/powerlevel10k powerlevel10k
 

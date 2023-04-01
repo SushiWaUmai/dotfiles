@@ -453,7 +453,6 @@ createmon(void)
 	m->mfact = mfact;
 	m->nmaster = nmaster;
 	m->showbar = showbar;
-	m->topbar = topbar;
 	m->gappx = gappx;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
@@ -1564,7 +1563,7 @@ setup(void)
 	lrpad = drw->fonts->h;
 	bh = drw->fonts->h + user_bh;
 	sp = sidepad;
-	vp = (topbar == 1) ? vertpad : - vertpad;
+	vp = vertpad;
 	updategeom();
 
 	/* init atoms */
@@ -1890,8 +1889,8 @@ updatebarpos(Monitor *m)
 	m->wh = m->mh;
 	if (m->showbar) {
 		m->wh = m->wh - vertpad - bh;
-		m->by = m->topbar ? m->wy : m->wy + m->wh + 2 * vertpad;
-		m->wy = m->topbar ? m->wy + bh + 2 * vp : m->wy;
+		m->by = m->wy;
+		m->wy = m->wy + bh + 2 * vp;
 	} else
 		m->by = -bh - 2 * vp;
 }
@@ -2135,8 +2134,7 @@ warp(const Client *c)
 
 	if (!getrootptr(&x, &y) ||
 	    (x > c->x - c->bw && y > c->y - c->bw && x < c->x + c->w + c->bw*2 && y < c->y + c->h + c->bw*2) ||
-	    (y > c->mon->by && y < c->mon->by + bh) ||
-	    (c->mon->topbar && !y))
+	    (y > c->mon->by && y < c->mon->by + bh))
 		return;
 
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w / 2, c->h / 2);

@@ -143,7 +143,7 @@ statusstr(size_t * len, char * status)
 
   const char* bat_state_str;
   int battery_icons_idx = bat_perc_val / (100 / battery_icon_length);
-  battery_icons_idx = battery_icons_idx > 4 ? 4 : battery_icons_idx;
+  battery_icons_idx = battery_icons_idx > (battery_icon_length - 1) ? (battery_icon_length - 1) : battery_icons_idx;
   if (state) {
     bat_state_str = charging_icons[battery_icons_idx];
   } else {
@@ -151,7 +151,7 @@ statusstr(size_t * len, char * status)
   }
 
   int volume_icons_idx = vol_perc_val / (100 / volume_icon_length);
-  volume_icons_idx = volume_icons_idx > 2 ? 2 : volume_icons_idx;
+  volume_icons_idx = volume_icons_idx > (volume_icon_length - 1) ? (volume_icon_length - 1) : volume_icons_idx;
   const char *vol_state_str;
   if (vol_muted) {
     vol_state_str = volume_muted_icon;
@@ -161,7 +161,7 @@ statusstr(size_t * len, char * status)
   }
 
   int brightness_icons_idx = brightness_perc / (100 / brightness_icon_length);
-  brightness_icons_idx = brightness_icons_idx > 2 ? 2 : brightness_icons_idx;
+  brightness_icons_idx = brightness_icons_idx > (brightness_icon_length - 1) ? (brightness_icon_length - 1) : brightness_icons_idx;
   const char *brightness_state_str = brightness_icons[brightness_icons_idx];
 
   *len = 0;

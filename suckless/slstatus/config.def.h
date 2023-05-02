@@ -68,40 +68,53 @@ static const char unknown_str[] = "";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 
-const char battery_icons[5][4] = {
-  "",
-  "",
-  "",
-  "",
-  ""
+const char battery_icons[10][5] = {
+  "󰁺",
+  "󰁻",
+  "󰁼",
+  "󰁽",
+  "󰁾",
+  "󰁿",
+  "󰂀",
+  "󰂁",
+  "󰂂",
+  "󰁹",
 };
 
-const char charging_icons[5][4] = {
-  "",
-  "",
-  "",
-  "",
-  ""
+const char charging_icons[10][5] = {
+  "󰢜",
+  "󰂆",
+  "󰂇",
+  "󰂈",
+  "󰢝",
+  "󰂉",
+  "󰢞",
+  "󰂊",
+  "󰂋",
+  "󰂅",
 };
+const size_t battery_icon_length = 10;
 
-const char no_wifi_icon[] = "睊";
-const char wifi_icon[] = "直";
+const char no_wifi_icon[] = "󰖪";
+const char wifi_icon[] = "󰖩";
 
-const char volume_icons[3][4] = {
-  "",
-  "",
-  "",
+const char volume_icons[3][5] = {
+  "󰕿",
+  "󰖀",
+  "󰕾",
 };
+const size_t volume_icon_length = 3;
 
-const char brightness_icons[3][4] = {
-  "",
-  "",
-  "",
+const char brightness_icons[3][5] = {
+  "󰃞",
+  "󰃟",
+  "󰃠",
 };
+const size_t brightness_icon_length = 3;
 
-const char volume_muted_icon[] = "婢";
-const char keyboard_icon[] = "";
-const char kernel_icon[] = "";
+const char volume_muted_icon[] = "󰸈";
+const char keyboard_icon[] = "󰥻";
+const char kernel_icon[] = "󰣇";
 
 void to_upper(const char *str, char *to) {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -129,7 +142,7 @@ statusstr(size_t * len, char * status)
   const char *ssid_perc = wifi_perc("wlan0");
 
   const char* bat_state_str;
-  int battery_icons_idx = bat_perc_val / (100 / 5);
+  int battery_icons_idx = bat_perc_val / (100 / battery_icon_length);
   battery_icons_idx = battery_icons_idx > 4 ? 4 : battery_icons_idx;
   if (state) {
     bat_state_str = charging_icons[battery_icons_idx];
@@ -137,7 +150,7 @@ statusstr(size_t * len, char * status)
     bat_state_str = battery_icons[battery_icons_idx];
   }
 
-  int volume_icons_idx = vol_perc_val / (100 / 3);
+  int volume_icons_idx = vol_perc_val / (100 / volume_icon_length);
   volume_icons_idx = volume_icons_idx > 2 ? 2 : volume_icons_idx;
   const char *vol_state_str;
   if (vol_muted) {
@@ -147,7 +160,7 @@ statusstr(size_t * len, char * status)
     vol_state_str = volume_icons[volume_icons_idx];
   }
 
-  int brightness_icons_idx = brightness_perc / (100 / 3);
+  int brightness_icons_idx = brightness_perc / (100 / brightness_icon_length);
   brightness_icons_idx = brightness_icons_idx > 2 ? 2 : brightness_icons_idx;
   const char *brightness_state_str = brightness_icons[brightness_icons_idx];
 

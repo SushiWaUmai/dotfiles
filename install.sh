@@ -41,3 +41,5 @@ cp -R ./.config /home/$USERNAME/
 cp -R ./.surf /home/$USERNAME/
 cp -R ./.wallpaper /home/$USERNAME/
 cp ./.xinitrc /home/$USERNAME/
+cp ./.zshrc /home/$USERNAME/
+cp ./.tmux.conf /home/$USERNAME/

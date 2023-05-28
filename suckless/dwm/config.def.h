@@ -1,4 +1,7 @@
 /* See LICENSE file for copyright and license details. */
+// Used Patches
+// https://dwm.suckless.org/patches/shift-tools/
+// https://dwm.suckless.org/patches/autostart/
 
 /* appearance */
 static const unsigned int borderpx    = 1;  /* border pixel of windows */
@@ -80,7 +83,6 @@ static const char *lock[]      = {"slock", NULL};
 
 static const Key keys[] = {
   /* modifier              key                       function          argument */
-
     {1,                    XF86XK_AudioRaiseVolume,  spawn,           {.v = upvol}                 },
     {0,                    XF86XK_AudioLowerVolume,  spawn,           {.v = downvol}               },
     {0,                    XF86XK_AudioMute,         spawn,           {.v = mutevol}               },

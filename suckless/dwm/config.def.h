@@ -48,7 +48,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY, TAG)                                                                           \
   {MODKEY, KEY, view, {.ui = 1 << TAG}}, {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}}, \
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                                             \
@@ -83,52 +83,50 @@ static const char *lock[]      = {"slock", NULL};
 
 static const Key keys[] = {
   /* modifier              key                       function          argument */
-    {1,                    XF86XK_AudioRaiseVolume,  spawn,           {.v = upvol}                 },
-    {0,                    XF86XK_AudioLowerVolume,  spawn,           {.v = downvol}               },
-    {0,                    XF86XK_AudioMute,         spawn,           {.v = mutevol}               },
-    {0,                    XF86XK_MonBrightnessUp,   spawn,           {.v = upbr}                  },
-    {0,                    XF86XK_MonBrightnessDown, spawn,           {.v = downbr}                },
+    {1,                    XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol}                 },
+    {0,                    XF86XK_AudioLowerVolume,  spawn,          {.v = downvol}               },
+    {0,                    XF86XK_AudioMute,         spawn,          {.v = mutevol}               },
+    {0,                    XF86XK_MonBrightnessUp,   spawn,          {.v = upbr}                  },
+    {0,                    XF86XK_MonBrightnessDown, spawn,          {.v = downbr}                },
 
-    {MODKEY,               XK_o,                     shifttagclients, {.i = +1}                    },
-    {MODKEY | ShiftMask,   XK_o,                     shifttag,        {.i = +1}                    },
-    {MODKEY | ShiftMask,   XK_i,                     shifttag,        {.i = -1}                    },
-    {MODKEY,               XK_i,                     shifttagclients, {.i = -1}                    },
+    {MODKEY,               XK_o,                     shiftview,      {.i = +1}                    },
+    {MODKEY,               XK_i,                     shiftview,      {.i = -1}                    },
 
-    {MODKEY,               XK_p,                     spawn,           {.v = dmenucmd}              },
-    {MODKEY,               XK_n,                     spawn,           {.v = termcmd}               },
-    {MODKEY,               XK_b,                     togglebar,       {0}                          },
+    {MODKEY,               XK_p,                     spawn,          {.v = dmenucmd}              },
+    {MODKEY,               XK_n,                     spawn,          {.v = termcmd}               },
+    {MODKEY,               XK_b,                     togglebar,      {0}                          },
 
-    {MODKEY,               XK_j,                     focusstack,      {.i = +1}                    },
-    {MODKEY,               XK_k,                     focusstack,      {.i = -1}                    },
+    {MODKEY,               XK_j,                     focusstack,     {.i = +1}                    },
+    {MODKEY,               XK_k,                     focusstack,     {.i = -1}                    },
 
-    {MODKEY | ShiftMask,   XK_s,                     spawn,           SHCMD("~/.dwm/screensnap.sh")},
-    {MODKEY,               XK_s,                     spawn,           SHCMD("~/.dwm/screenshot.sh")},
+    {MODKEY | ShiftMask,   XK_s,                     spawn,          SHCMD("~/.dwm/screensnap.sh")},
+    {MODKEY,               XK_s,                     spawn,          SHCMD("~/.dwm/screenshot.sh")},
 
-    {MODKEY | ControlMask, XK_i,                     shiftboth,       {.i = -1}                    },
-    {MODKEY | ControlMask, XK_o,                     shiftboth,       {.i = +1}                    },
+    {MODKEY | ControlMask, XK_i,                     shiftboth,      {.i = -1}                    },
+    {MODKEY | ControlMask, XK_o,                     shiftboth,      {.i = +1}                    },
 
-    {MODKEY,               XK_h,                     setmfact,        {.f = -0.05}                 },
-    {MODKEY,               XK_l,                     setmfact,        {.f = +0.05}                 },
-    {MODKEY,               XK_Return,                zoom,            {0}                          },
-    {MODKEY,               XK_Tab,                   view,            {0}                          },
-    {MODKEY,               XK_q,                     killclient,      {0}                          },
+    {MODKEY,               XK_h,                     setmfact,       {.f = -0.05}                 },
+    {MODKEY,               XK_l,                     setmfact,       {.f = +0.05}                 },
+    {MODKEY,               XK_Return,                zoom,           {0}                          },
+    {MODKEY,               XK_Tab,                   view,           {0}                          },
+    {MODKEY,               XK_q,                     killclient,     {0}                          },
 
-    {MODKEY,               XK_t,                     setlayout,       {.v = &layouts[0]}           },
-    {MODKEY,               XK_f,                     setlayout,       {.v = &layouts[1]}           },
-    {MODKEY,               XK_m,                     setlayout,       {.v = &layouts[2]}           },
-    {MODKEY,               XK_space,                 setlayout,       {0}                          },
+    {MODKEY,               XK_t,                     setlayout,      {.v = &layouts[0]}           },
+    {MODKEY,               XK_f,                     setlayout,      {.v = &layouts[1]}           },
+    {MODKEY,               XK_m,                     setlayout,      {.v = &layouts[2]}           },
+    {MODKEY,               XK_space,                 setlayout,      {0}                          },
 
-    {MODKEY | ControlMask, XK_space,                 togglefloating,  {0}                          },
-    {MODKEY,               XK_0,                     view,            {.ui = ~0}                   },
-    {MODKEY | ShiftMask,   XK_0,                     tag,             {.ui = ~0}                   },
+    {MODKEY | ControlMask, XK_space,                 togglefloating, {0}                          },
+    {MODKEY,               XK_0,                     view,           {.ui = ~0}                   },
+    {MODKEY | ShiftMask,   XK_0,                     tag,            {.ui = ~0}                   },
 
-    {MODKEY,               XK_comma,                 focusmon,        {.i = -1}                    },
-    {MODKEY,               XK_period,                focusmon,        {.i = +1}                    },
-    {MODKEY | ControlMask, XK_comma,                 tagandfocusmon,  {.i = -1}                    },
-    {MODKEY | ControlMask, XK_period,                tagandfocusmon,  {.i = +1}                    },
+    {MODKEY,               XK_comma,                 focusmon,       {.i = -1}                    },
+    {MODKEY,               XK_period,                focusmon,       {.i = +1}                    },
+    {MODKEY | ControlMask, XK_comma,                 tagandfocusmon, {.i = -1}                    },
+    {MODKEY | ControlMask, XK_period,                tagandfocusmon, {.i = +1}                    },
 
-    {MODKEY | ShiftMask,   XK_l,                     spawn,           {.v = lock}                  },
-    {MODKEY | ShiftMask,   XK_q,                     quit,            {0}                          },
+    {MODKEY | ShiftMask,   XK_l,                     spawn,          {.v = lock}                  },
+    {MODKEY | ShiftMask,   XK_q,                     quit,           {0}                          },
 
     TAGKEYS(XK_1, 0),
     TAGKEYS(XK_2, 1),

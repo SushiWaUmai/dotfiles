@@ -22,23 +22,10 @@ cd suckless/slstatus
 make clean install
 cd ../..
 
-cd suckless/st
-make clean install
-cd ../..
-
-cd suckless/surf
-make clean install
-cd ../..
-
-cd suckless/tabbed
-make clean install
-cd ../..
-
 # get the user name
 USERNAME=$(logname)
 ln -s ./.dwm /home/$USERNAME/
 cp -R ./.config /home/$USERNAME/
-cp -R ./.surf /home/$USERNAME/
 cp -R ./.wallpaper /home/$USERNAME/
 cp ./.xinitrc /home/$USERNAME/
 cp ./.zshrc /home/$USERNAME/

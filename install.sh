@@ -6,21 +6,9 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-cd suckless/dmenu
-make clean install
-cd ../..
-
-cd suckless/dwm
-make clean install
-cd ../..
-
-cd suckless/slock
-make clean install
-cd ../..
-
-cd suckless/slstatus
-make clean install
-cd ../..
+make -C ./suckless/chadwm clean install
+make -C ./suckless/slock clean install
+make -C ./suckless/slstatus clean install
 
 # get the user name
 USERNAME=$(logname)

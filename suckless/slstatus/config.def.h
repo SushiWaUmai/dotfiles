@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 #include "slstatus.h"
+#include "themes/dracula.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 /* interval between updates (in ms) */
@@ -69,81 +69,69 @@ static const char unknown_str[] = "";
  */
 
 const char battery_icons[10][5] = {
-  "󰁺",
-  "󰁻",
-  "󰁼",
-  "󰁽",
-  "󰁾",
-  "󰁿",
-  "󰂀",
-  "󰂁",
-  "󰂂",
-  "󰁹",
+    "󰁺",
+    "󰁻",
+    "󰁼",
+    "󰁽",
+    "󰁾",
+    "󰁿",
+    "󰂀",
+    "󰂁",
+    "󰂂",
+    "󰁹",
 };
 
 const char charging_icons[10][5] = {
-  "󰢜",
-  "󰂆",
-  "󰂇",
-  "󰂈",
-  "󰢝",
-  "󰂉",
-  "󰢞",
-  "󰂊",
-  "󰂋",
-  "󰂅",
+    "󰢜",
+    "󰂆",
+    "󰂇",
+    "󰂈",
+    "󰢝",
+    "󰂉",
+    "󰢞",
+    "󰂊",
+    "󰂋",
+    "󰂅",
 };
 const size_t battery_icon_length = 10;
 
 const char no_wifi_icon[] = "󰖪";
-const char wifi_icon[] = "󰖩";
+const char wifi_icon[]    = "󰖩";
 
 const char volume_icons[3][5] = {
-  "󰕿",
-  "󰖀",
-  "󰕾",
+    "󰕿",
+    "󰖀",
+    "󰕾",
 };
 const size_t volume_icon_length = 3;
 
 const char brightness_icons[3][5] = {
-  "󰃞",
-  "󰃟",
-  "󰃠",
+    "󰃞",
+    "󰃟",
+    "󰃠",
 };
 const size_t brightness_icon_length = 3;
 
 const char volume_muted_icon[] = "󰸈";
-const char keyboard_icon[] = "󰥻";
-const char kernel_icon[] = "󰣇";
-
-void to_upper(const char *str, char *to) {
-    for (int i = 0; str[i] != '\0'; i++) {
-        to[i] = str[i] - 32;
-    }
-}
+const char keyboard_icon[]     = "󰥻";
+const char clock_icon[]        = "󰥔";
 
 static void
-statusstr(size_t * len, char * status)
-{
+statusstr(size_t *len, char *status) {
   int bat_perc_val = battery_perc_avg();
-  int state = battery_state_any();
+  int state        = battery_state_any();
 
   int brightness_perc = brightnessctl_perc();
-  int vol_perc_val = vol_perc_amixer();
+  int vol_perc_val    = vol_perc_amixer();
 
   int vol_muted = vol_muted_amixer();
 
-  const char *nocapkeyboard = keymap();
-  static char keyboard[32];
-  memset(keyboard, 0, 32);
-  to_upper(nocapkeyboard, keyboard);
-
-  const char *ssid = wifi_essid("wlan0");
+  const char *ssid      = wifi_essid("wlan0");
   const char *ssid_perc = wifi_perc("wlan0");
 
-  const char* bat_state_str;
-  int battery_icons_idx = bat_perc_val / (100 / battery_icon_length);
-  battery_icons_idx = battery_icons_idx > (battery_icon_length - 1) ? (battery_icon_length - 1) : battery_icons_idx;
+  const char *bat_state_str;
+  int         battery_icons_idx = bat_perc_val / (100 / battery_icon_length);
+  battery_icons_idx             = battery_icons_idx > (battery_icon_length - 1) ? (battery_icon_length - 1) : battery_icons_idx;
   if (state) {
     bat_state_str = charging_icons[battery_icons_idx];
   } else {
@@ -151,35 +139,29 @@ statusstr(size_t * len, char * status)
   }
 
   int volume_icons_idx = vol_perc_val / (100 / volume_icon_length);
-  volume_icons_idx = volume_icons_idx > (volume_icon_length - 1) ? (volume_icon_length - 1) : volume_icons_idx;
+  volume_icons_idx     = volume_icons_idx > (volume_icon_length - 1) ? (volume_icon_length - 1) : volume_icons_idx;
   const char *vol_state_str;
   if (vol_muted) {
     vol_state_str = volume_muted_icon;
-  }
-  else {
+  } else {
     vol_state_str = volume_icons[volume_icons_idx];
   }
 
-  int brightness_icons_idx = brightness_perc / (100 / brightness_icon_length);
-  brightness_icons_idx = brightness_icons_idx > (brightness_icon_length - 1) ? (brightness_icon_length - 1) : brightness_icons_idx;
+  int brightness_icons_idx         = brightness_perc / (100 / brightness_icon_length);
+  brightness_icons_idx             = brightness_icons_idx > (brightness_icon_length - 1) ? (brightness_icon_length - 1) : brightness_icons_idx;
   const char *brightness_state_str = brightness_icons[brightness_icons_idx];
 
   *len = 0;
-	*len += snprintf(status + *len, MAXLEN - *len,    " | ");
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %3d%% | "           , bat_state_str, bat_perc_val);
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s  %s | "              , keyboard_icon, keyboard);
+  *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^ %s %3d%%", green, bat_state_str, bat_perc_val);
 
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , brightness_state_str, brightness_perc);
-  *len += snprintf(status + *len, MAXLEN - *len,    "%s %3d%% | "            , vol_state_str, vol_perc_val);
+  *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^%s %3d%% ", red, brightness_state_str, brightness_perc);
+  *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^%s %3d%% ", orange, vol_state_str, vol_perc_val);
 
   if (ssid) {
-    *len += snprintf(status + *len, MAXLEN - *len,  "%s %3s%% | "           , wifi_icon, ssid_perc);
-  }
-  else {
-    *len += snprintf(status + *len, MAXLEN - *len,  "%s | "                 , no_wifi_icon);
+    *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s ^c%s^^b%s^%3s%% ", black, pink, wifi_icon, pink, black, ssid_perc);
+  } else {
+    *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s", black, red, no_wifi_icon);
   }
 
-	*len += snprintf(status + *len, MAXLEN - *len,    "%s | "                 , datetime("%a. %d %b. %Y - %H:%M:%S"));
-  *len += snprintf(status + *len, MAXLEN - *len,    " %s "                  , kernel_icon);
+  *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s ^b%s^ %s ", black, blue, clock_icon, darkblue, datetime("%a. %d %b. %Y - %H:%M:%S"));
 }
-

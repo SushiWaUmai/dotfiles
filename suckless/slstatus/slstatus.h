@@ -6,8 +6,8 @@
 const char *battery_perc(const char *);
 const char *battery_state(const char *);
 const char *battery_remaining(const char *);
-int battery_state_any();
-int battery_perc_avg();
+int         battery_state_any();
+int         battery_perc_avg();
 
 /* brightness */
 int brightnessctl_perc();
@@ -85,7 +85,8 @@ const char *uid(void);
 
 /* volume */
 const char *vol_perc(const char *card);
-int vol_perc_amixer();
+int         vol_perc_amixer();
+int         vol_muted_amixer();
 
 /* wifi */
 const char *wifi_perc(const char *interface);

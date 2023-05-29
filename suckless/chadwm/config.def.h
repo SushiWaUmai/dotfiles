@@ -106,9 +106,10 @@ static const int   lockfullscreen = 1;    /* 1 will force focus on the fullscree
 
 static const Layout layouts[] = {
   /* symbol     arrange function */
-    {"[]=",  tile                  }, /* first entry is default */
-    {"[M]",  monocle               },
     {"[@]",  spiral                },
+    {"><>",  NULL                  }, /* no layout function means floating behavior */
+    {"[M]",  monocle               },
+    {"[]=",  tile                  }, /* first entry is default */
     {"[\\]", dwindle               },
     {"H[]",  deck                  },
     {"TTT",  bstack                },
@@ -119,7 +120,6 @@ static const Layout layouts[] = {
     {":::",  gaplessgrid           },
     {"|M|",  centeredmaster        },
     {">M>",  centeredfloatingmaster},
-    {"><>",  NULL                  }, /* no layout function means floating behavior */
     {NULL,   NULL                  },
 };
 
@@ -218,8 +218,8 @@ static const Key keys[] = {
     {MODKEY,                           XK_t,                     setlayout,      {.v = &layouts[0]}           },
     {MODKEY | ShiftMask,               XK_f,                     setlayout,      {.v = &layouts[1]}           },
     {MODKEY,                           XK_m,                     setlayout,      {.v = &layouts[2]}           },
-    {MODKEY | ControlMask,             XK_g,                     setlayout,      {.v = &layouts[10]}          },
-    {MODKEY | ControlMask | ShiftMask, XK_t,                     setlayout,      {.v = &layouts[13]}          },
+    {MODKEY | ControlMask,             XK_g,                     setlayout,      {.v = &layouts[11]}          },
+    {MODKEY | ControlMask | ShiftMask, XK_t,                     setlayout,      {.v = &layouts[14]}          },
     {MODKEY,                           XK_space,                 setlayout,      {0}                          },
     {MODKEY | ControlMask,             XK_comma,                 cyclelayout,    {.i = -1}                    },
     {MODKEY | ControlMask,             XK_period,                cyclelayout,    {.i = +1}                    },

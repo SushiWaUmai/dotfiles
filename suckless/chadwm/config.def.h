@@ -64,11 +64,13 @@ static const char *colors[][3] = {
 /* tagging */
 static char *tags[] = {"󰆍", "󰖟", "󰚢", "", "󰒋"};
 
-static const char *eww[] = {"eww", "open", "eww", NULL};
+static const char *neofetch[]    = {"alacritty", "--hold", "-e", "neofetch", NULL};
+static const char *filemanager[] = {"pcmanfm", "~", NULL};
 
 static const Launcher launchers[] = {
   /* command     name to display */
-    {eww, ""},
+    {neofetch,    "󰣇"},
+    {filemanager, "" },
 };
 
 static const int tagschemes[] = {
@@ -92,7 +94,6 @@ static const Rule rules[] = {
   /* class      instance    title       tags mask     iscentered   isfloating   monitor */
     {"Gimp",    NULL, NULL, 0,      0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, 0, -1},
-    {"eww",     NULL, NULL, 0,      0, 1, -1},
 };
 
 /* layout(s) */

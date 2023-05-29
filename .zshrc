@@ -11,6 +11,10 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export GOPATH="$HOME/.go"
 
+export TERM="xterm-256color"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 source "${HOME}/.zgenom/zgenom.zsh"
 
 zgenom autoupdate

@@ -173,8 +173,10 @@ static const Key keys[] = {
   // shift view
   // {MODKEY,                           XK_Left,                  shiftview,      {.i = -1}                  },
   // {MODKEY,                           XK_Right,                 shiftview,      {.i = +1}                  },
-    {MODKEY,                           XK_o,                     shiftview,      {.i = +1}                    },
     {MODKEY,                           XK_i,                     shiftview,      {.i = -1}                    },
+    {MODKEY,                           XK_o,                     shiftview,      {.i = +1}                    },
+    {MODKEY | ControlMask,             XK_i,                     shiftboth,      {.i = -1}                    },
+    {MODKEY | ControlMask,             XK_o,                     shiftboth,      {.i = +1}                    },
 
  // change m,cfact sizes
     {MODKEY,                           XK_h,                     setmfact,       {.f = -0.05}                 },
@@ -189,16 +191,16 @@ static const Key keys[] = {
     {MODKEY,                           XK_Tab,                   view,           {0}                          },
 
  // overall gaps
-    {MODKEY | ControlMask,             XK_i,                     incrgaps,       {.i = +1}                    },
-    {MODKEY | ControlMask,             XK_d,                     incrgaps,       {.i = -1}                    },
+    // {MODKEY | ControlMask,             XK_i,                     incrgaps,       {.i = +1}                    },
+    // {MODKEY | ControlMask,             XK_d,                     incrgaps,       {.i = -1}                    },
 
  // inner gaps
     {MODKEY | ShiftMask,               XK_i,                     incrigaps,      {.i = +1}                    },
     {MODKEY | ControlMask | ShiftMask, XK_i,                     incrigaps,      {.i = -1}                    },
 
  // outer gaps
-    {MODKEY | ControlMask,             XK_o,                     incrogaps,      {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_o,                     incrogaps,      {.i = -1}                    },
+    // {MODKEY | ControlMask,             XK_o,                     incrogaps,      {.i = +1}                    },
+    // {MODKEY | ControlMask | ShiftMask, XK_o,                     incrogaps,      {.i = -1}                    },
 
  // inner+outer hori, vert gaps
     {MODKEY | ControlMask,             XK_6,                     incrihgaps,     {.i = +1}                    },

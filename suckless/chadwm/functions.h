@@ -28,4 +28,12 @@ static void getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int
 static void setgaps(int oh, int ov, int ih, int iv);
 
 static void movestack(const Arg *arg);
+
+static void shift(unsigned int *tag, int i);
+static void shifttag(const Arg *arg);
+static void shifttagclients(const Arg *arg);
 static void shiftview(const Arg *arg);
+static void shiftviewclients(const Arg *arg);
+static void shiftboth(const Arg *arg);
+static void swaptags(const Arg *arg);
+static void shiftswaptags(const Arg *arg);

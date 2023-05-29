@@ -22,9 +22,5 @@ chmod +x ./install.sh
 - rofi
 - pcmanfm
 - neovim
-- xwallpaper
-- xautolock
-- xclip
 - shotgun
 - picom
-- autorandr

@@ -1,7 +1,10 @@
 numlockx on
 lxsession &
 exec slstatus &
-xautolock -time 10 -locker slock &
+
+xset s on
+xset s 600
+xss-lock -n dm-tool lock
 
 xwallpaper --focus "${HOME}/.wallpaper/wallpaper.png"
 

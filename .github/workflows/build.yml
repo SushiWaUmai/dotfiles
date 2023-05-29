@@ -34,10 +34,3 @@ jobs:
           name: slstatus
           path: ./suckless/slstatus/slstatus
           retention-days: 5
-
-      - name: Upload slock artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: slock
-          path: ./suckless/slock/slock
-          retention-days: 5

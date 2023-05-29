@@ -12,7 +12,10 @@ echo "Installing Dependencies..."
 pacman -Sy
 pacman -S base base-devel xorg imlib2 --noconfirm
 
-echo "Installing Packages..."
+echo "Installing Programs"
+pacman -S pcmanfm shotgun xwallpaper picom autorandr xautolock xclip alacritty neovim rofi --noconfirm
+
+echo "Compiling and Installing Suckless Programs..."
 make -C ./suckless/chadwm clean install
 make -C ./suckless/slock clean install
 make -C ./suckless/slstatus clean install

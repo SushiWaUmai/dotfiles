@@ -21,6 +21,7 @@
 # export GTK_IM_MODULE=fcitx
 
 export WINIT_X11_SCALE_FACTOR=1
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # auto mount
 udiskie &

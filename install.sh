@@ -13,7 +13,7 @@ pacman -Sy
 pacman -S base base-devel xorg imlib2 --noconfirm
 
 echo "Installing Tools"
-pacman -S pcmanfm shotgun xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx --noconfirm
+pacman -S pcmanfm shotgun xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx xss-lock --noconfirm
 
 echo "Compiling and Installing Suckless Tools..."
 make -C ./suckless/chadwm clean install

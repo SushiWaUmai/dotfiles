@@ -20,6 +20,8 @@
 # export QT_IM_MODULE=fcitx
 # export GTK_IM_MODULE=fcitx
 
+export WINIT_X11_SCALE_FACTOR=1
+
 # auto mount
 udiskie &
 

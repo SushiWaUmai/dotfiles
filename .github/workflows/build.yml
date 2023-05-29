@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pacman -Sy
-          pacman -S make
+          pacman -S make --noconfirm
 
       - name: Install
         run: |

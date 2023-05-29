@@ -1,3 +1,4 @@
+numlockx on
 lxsession &
 exec slstatus &
 xautolock -time 10 -locker slock &

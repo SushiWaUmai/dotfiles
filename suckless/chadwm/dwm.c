@@ -478,7 +478,7 @@ void applyrules(Client *c) {
   XClassHint ch = {NULL, NULL};
 
   /* rule matching */
-  c->iscentered = 0;
+  c->iscentered = 1;
   c->isfloating = 0;
   c->tags = 0;
   XGetClassHint(dpy, c->win, &ch);

@@ -62,7 +62,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static char *tags[] = {"", "", "", "", ""};
+static char *tags[] = {"󰆍", "󰖟", "󰚢", "", "󰒋"};
 
 static const char *eww[] = {"eww", "open", "eww", NULL};
 
@@ -236,7 +236,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask,               XK_w,                     setborderpx,    {.i = default_border}        },
 
  // kill dwm
-    {MODKEY | ControlMask,             XK_q,                     spawn,          SHCMD("killall slstatus dwm")},
+    {MODKEY | ShiftMask,               XK_q,                     spawn,          SHCMD("killall slstatus dwm")},
 
  // kill window
     {MODKEY,                           XK_q,                     killclient,     {0}                          },

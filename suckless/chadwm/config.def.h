@@ -191,18 +191,18 @@ static const Key keys[] = {
     {MODKEY,                           XK_Tab,                   view,           {0}                          },
 
  // overall gaps
-    // {MODKEY | ControlMask,             XK_i,                     incrgaps,       {.i = +1}                    },
-    // {MODKEY | ControlMask,             XK_d,                     incrgaps,       {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_i,                     incrgaps,       {.i = +1}                    },
+  // {MODKEY | ControlMask,             XK_d,                     incrgaps,       {.i = -1}                    },
 
- // inner gaps
+  // inner gaps
     {MODKEY | ShiftMask,               XK_i,                     incrigaps,      {.i = +1}                    },
     {MODKEY | ControlMask | ShiftMask, XK_i,                     incrigaps,      {.i = -1}                    },
 
  // outer gaps
-    // {MODKEY | ControlMask,             XK_o,                     incrogaps,      {.i = +1}                    },
-    // {MODKEY | ControlMask | ShiftMask, XK_o,                     incrogaps,      {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_o,                     incrogaps,      {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_o,                     incrogaps,      {.i = -1}                    },
 
- // inner+outer hori, vert gaps
+  // inner+outer hori, vert gaps
     {MODKEY | ControlMask,             XK_6,                     incrihgaps,     {.i = +1}                    },
     {MODKEY | ControlMask | ShiftMask, XK_6,                     incrihgaps,     {.i = -1}                    },
     {MODKEY | ControlMask,             XK_7,                     incrivgaps,     {.i = +1}                    },
@@ -225,8 +225,8 @@ static const Key keys[] = {
     {MODKEY | ControlMask,             XK_period,                cyclelayout,    {.i = +1}                    },
     {MODKEY,                           XK_0,                     view,           {.ui = ~0}                   },
     {MODKEY | ShiftMask,               XK_0,                     tag,            {.ui = ~0}                   },
-    {MODKEY,                           XK_comma,                 focusmon,       {.i = -1}                    },
-    {MODKEY,                           XK_period,                focusmon,       {.i = +1}                    },
+    {MODKEY,                           XK_comma,                 tagandfocusmon, {.i = -1}                    },
+    {MODKEY,                           XK_period,                tagandfocusmon, {.i = +1}                    },
     {MODKEY | ShiftMask,               XK_comma,                 tagmon,         {.i = -1}                    },
     {MODKEY | ShiftMask,               XK_period,                tagmon,         {.i = +1}                    },
 

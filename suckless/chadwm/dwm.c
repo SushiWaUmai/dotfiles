@@ -328,6 +328,7 @@ static void switchtag(void);
 static Monitor *systraytomon(Monitor *m);
 static void tabmode(const Arg *arg);
 static void tag(const Arg *arg);
+static void tagandfocusmon(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -3194,6 +3195,11 @@ void tag(const Arg *arg) {
     focus(NULL);
     arrange(selmon);
   }
+}
+
+void tagandfocusmon(const Arg *arg) {
+  tagmon(arg);
+  focusmon(arg);
 }
 
 void tagmon(const Arg *arg) {

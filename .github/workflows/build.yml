@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pacman -Sy
-          pacman -S base base-devel --noconfirm
+          pacman -S base base-devel xorg --noconfirm
 
       - name: Install
         run: |

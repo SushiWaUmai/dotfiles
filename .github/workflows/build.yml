@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pacman -Sy
-          pacman -S base base-devel xorg --noconfirm
+          pacman -S base base-devel xorg imlib2 --noconfirm
 
       - name: Install
         run: |

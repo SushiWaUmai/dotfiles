@@ -158,7 +158,7 @@ statusstr(size_t *len, char *status) {
   *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^%s %3d%% ", orange, vol_state_str, vol_perc_val);
 
   if (ssid) {
-    *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s ^c%s^^b%s^%3s%% ", black, pink, wifi_icon, pink, black, ssid_perc);
+    *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s ^c%s^^b%s^ %3s%% ", black, pink, wifi_icon, pink, black, ssid_perc);
   } else {
     *len += snprintf(status + *len, MAXLEN - *len, " ^c%s^^b%s^ %s", black, red, no_wifi_icon);
   }

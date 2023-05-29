@@ -17,13 +17,10 @@ make -C ./suckless/chadwm clean install
 make -C ./suckless/slock clean install
 make -C ./suckless/slstatus clean install
 
-if [ -e /bin/logname ]; then
-  echo "Copying Configurations..."
-  USERNAME=`logname`
-  cp -R ./.dwm /home/$USERNAME/
-  cp -R ./.config /home/$USERNAME/
-  cp -R ./.wallpaper /home/$USERNAME/
-  cp ./.xinitrc /home/$USERNAME/
-  cp ./.zshrc /home/$USERNAME/
-  cp ./.tmux.conf /home/$USERNAME/
-fi
+echo "Copying Configurations..."
+cp -R ./.dwm /home/$USER/
+cp -R ./.config /home/$USER/
+cp -R ./.wallpaper /home/$USER/
+cp ./.xinitrc /home/$USER/
+cp ./.zshrc /home/$USER/
+cp ./.tmux.conf /home/$USER/

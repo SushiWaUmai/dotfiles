@@ -3,8 +3,8 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx                 = 0;  /* border pixel of windows */
-static const unsigned int default_border           = 0;  /* to switch back to default border after dynamic border resizing via keybinds */
+static const unsigned int borderpx                 = 1;  /* border pixel of windows */
+static const unsigned int default_border           = 1;  /* to switch back to default border after dynamic border resizing via keybinds */
 static const unsigned int snap                     = 32; /* snap pixel */
 static const unsigned int gappih                   = 10; /* horiz inner gap between windows */
 static const unsigned int gappiv                   = 10; /* vert inner gap between windows */
@@ -26,7 +26,7 @@ static const int          vertpadtab               = 35;
 static const int          horizpadtabi             = 15;
 static const int          horizpadtabo             = 15;
 static const int          scalepreview             = 4;
-static const int          tag_preview              = 0; /* 1 means enable, 0 is off */
+static const int          tag_preview              = 1; /* 1 means enable, 0 is off */
 static const int          colorfultag              = 1; /* 0 means use SchemeSel for selected non vacant tag */
 static const char        *upvol[]                  = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
 static const char        *downvol[]                = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
@@ -173,8 +173,6 @@ static const Key keys[] = {
   // {MODKEY,                           XK_d,                     incnmaster,     {.i = -1}                  },
 
   // shift view
-  // {MODKEY,                           XK_Left,                  shiftview,      {.i = -1}                  },
-  // {MODKEY,                           XK_Right,                 shiftview,      {.i = +1}                  },
     {MODKEY,                           XK_i,                     shiftview,      {.i = -1}                    },
     {MODKEY,                           XK_o,                     shiftview,      {.i = +1}                    },
     {MODKEY | ControlMask,             XK_i,                     shiftboth,      {.i = -1}                    },
@@ -193,26 +191,26 @@ static const Key keys[] = {
     {MODKEY,                           XK_Tab,                   view,           {0}                          },
 
  // overall gaps
-  // {MODKEY | ControlMask,             XK_i,                     incrgaps,       {.i = +1}                    },
-  // {MODKEY | ControlMask,             XK_d,                     incrgaps,       {.i = -1}                    },
+    {MODKEY,                           XK_equal,                 incrgaps,       {.i = +1}                    },
+    {MODKEY,                           XK_minus,                 incrgaps,       {.i = -1}                    },
 
-  // inner gaps
-    {MODKEY | ShiftMask,               XK_i,                     incrigaps,      {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_i,                     incrigaps,      {.i = -1}                    },
+ // inner gaps
+  // {MODKEY | ShiftMask,               XK_i,                     incrigaps,      {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_i,                     incrigaps,      {.i = -1}                    },
 
- // outer gaps
+  // outer gaps
   // {MODKEY | ControlMask,             XK_o,                     incrogaps,      {.i = +1}                    },
   // {MODKEY | ControlMask | ShiftMask, XK_o,                     incrogaps,      {.i = -1}                    },
 
   // inner+outer hori, vert gaps
-    {MODKEY | ControlMask,             XK_6,                     incrihgaps,     {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_6,                     incrihgaps,     {.i = -1}                    },
-    {MODKEY | ControlMask,             XK_7,                     incrivgaps,     {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_7,                     incrivgaps,     {.i = -1}                    },
-    {MODKEY | ControlMask,             XK_8,                     incrohgaps,     {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_8,                     incrohgaps,     {.i = -1}                    },
-    {MODKEY | ControlMask,             XK_9,                     incrovgaps,     {.i = +1}                    },
-    {MODKEY | ControlMask | ShiftMask, XK_9,                     incrovgaps,     {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_6,                     incrihgaps,     {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_6,                     incrihgaps,     {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_7,                     incrivgaps,     {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_7,                     incrivgaps,     {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_8,                     incrohgaps,     {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_8,                     incrohgaps,     {.i = -1}                    },
+  // {MODKEY | ControlMask,             XK_9,                     incrovgaps,     {.i = +1}                    },
+  // {MODKEY | ControlMask | ShiftMask, XK_9,                     incrovgaps,     {.i = -1}                    },
 
     {MODKEY | ControlMask | ShiftMask, XK_d,                     defaultgaps,    {0}                          },
 

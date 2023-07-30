@@ -15,14 +15,6 @@ pacman -S base base-devel xorg imlib2 --noconfirm
 pacman -S git curl --noconfirm
 
 
-echo "Installing Paru"
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-cd ..
-rm -rf ./paru-bin
-
-
 echo "Setting up zsh..."
 pacman -S zsh tmux --noconfirm
 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh

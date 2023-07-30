@@ -17,7 +17,7 @@ pacman -S git curl --noconfirm
 
 echo "Installing Paru"
 git clone https://aur.archlinux.org/paru-bin.git
-cd paru
+cd paru-bin
 makepkg -si
 cd ..
 rm -rf ./paru-bin

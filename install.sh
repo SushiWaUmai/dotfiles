@@ -27,7 +27,7 @@ cd dotfiles
 
 
 echo "Installing Tools..."
-pacman -S pcmanfm shotgun xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx xss-lock --noconfirm
+pacman -S pcmanfm shotgun xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx xss-lock bat exa --noconfirm
 
 
 echo "Compiling and Installing Suckless Tools..."

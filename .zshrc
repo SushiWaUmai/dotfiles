@@ -42,6 +42,9 @@ if ! zgenom saved; then
 	zgenom load zsh-users/zsh-completions
 	zgenom load softmoth/zsh-vim-mode
 
+	zgenom load DarrinTisdale/zsh-aliases-exa
+	zgenom load fdellwing/zsh-bat
+
   # generate the init script from plugins above
   zgenom save
   zgenom compile "$HOME/.zshrc"

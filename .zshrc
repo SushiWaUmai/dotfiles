@@ -18,6 +18,7 @@ export VISUAL="nvim"
 # Disable Telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export NEXT_TELEMETRY_DISABLED=1
+export GOTELEMETRY=off
 
 source "${HOME}/.zgenom/zgenom.zsh"
 

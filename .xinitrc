@@ -26,6 +26,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # auto mount
 udiskie &
 
+# emacs daemon
+emacs --daemon &
+
 # dwm suckless (dynamic window manager)
 exec dwm
 

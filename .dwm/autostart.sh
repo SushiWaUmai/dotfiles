@@ -6,7 +6,7 @@ xset s on
 xset s 600
 xss-lock -- dm-tool lock &
 
-xwallpaper --focus "${HOME}/.wallpaper/wallpaper.png"
+xwallpaper --zoom "${HOME}/.wallpaper/wallpaper.png"
 
 picom -b
 

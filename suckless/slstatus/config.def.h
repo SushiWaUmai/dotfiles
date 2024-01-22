@@ -126,8 +126,8 @@ statusstr(size_t *len, char *status) {
 
   int vol_muted = vol_muted_amixer();
 
-  const char *ssid      = wifi_essid("wlan0");
-  const char *ssid_perc = wifi_perc("wlan0");
+  const char *ssid      = wifi_essid("wlp2s0");
+  const char *ssid_perc = wifi_perc("wlp2s0");
 
   const char *bat_state_str;
   int         battery_icons_idx = bat_perc_val / (100 / battery_icon_length);

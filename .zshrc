@@ -9,11 +9,12 @@ source /usr/share/nvm/init-nvm.sh
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 export GOPATH="$HOME/.go"
 
 export TERM="xterm-256color"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 
 # Disable Telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1

@@ -23,6 +23,9 @@
 export WINIT_X11_SCALE_FACTOR=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# slstatus
+exec slstatus &
+
 # auto mount
 udiskie &
 

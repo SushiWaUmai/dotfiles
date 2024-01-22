@@ -65,11 +65,11 @@ static const char *colors[][3] = {
 static char *tags[] = {"󰆍", "󰖟", "󰚢", "", "󰒋"};
 
 static const char *neofetch[]    = {"alacritty", "--hold", "-e", "neofetch", NULL};
-static const char *filemanager[] = {"pcmanfm", "~", NULL};
+static const char *filemanager[] = {"thunar", "~", NULL};
 
 static const Launcher launchers[] = {
   /* command     name to display */
-    {neofetch,    "󰣇"},
+    {neofetch,    ""},
     {filemanager, "" },
 };
 
@@ -158,7 +158,7 @@ static const Key keys[] = {
 
     {MODKEY,                           XK_p,                     spawn,          SHCMD("rofi -show drun")     },
     {MODKEY,                           XK_n,                     spawn,          SHCMD("alacritty")           },
-    {MODKEY | ShiftMask,               XK_l,                     spawn,          SHCMD("dm-tool lock")        },
+    // {MODKEY | ShiftMask,               XK_l,                     spawn,          SHCMD("dm-tool lock")        },
 
  // toggle stuff
     {MODKEY,                           XK_b,                     togglebar,      {0}                          },

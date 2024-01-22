@@ -18,8 +18,8 @@ jobs:
 
       - name: Install
         run: |
-          chmod +x ./install.sh
-          ./install.sh
+          chmod +x ./arch-install.sh
+          ./arch-install.sh
 
       - name: Upload chadwm artifact
         uses: actions/upload-artifact@v3

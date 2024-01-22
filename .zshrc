@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -34,7 +34,6 @@ if ! zgenom saved; then
 	zgenom ohmyzsh plugins/git
 	zgenom ohmyzsh plugins/gh
 	zgenom ohmyzsh plugins/tmux
-	zgenom ohmyzsh plugins/thefuck
 	zgenom ohmyzsh plugins/web-search
 
 	zgenom load romkatv/powerlevel10k powerlevel10k
@@ -43,9 +42,7 @@ if ! zgenom saved; then
 	zgenom load zsh-users/zsh-syntax-highlighting
 	zgenom load zsh-users/zsh-completions
 	zgenom load softmoth/zsh-vim-mode
-
-	zgenom load DarrinTisdale/zsh-aliases-exa
-	zgenom load fdellwing/zsh-bat
+	zgenom load flinner/zsh-emacs
 
   # generate the init script from plugins above
   zgenom save

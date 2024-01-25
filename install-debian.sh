@@ -11,7 +11,7 @@ echo "Updating package lists..."
 apt update
 
 echo "Installing Dependencies..."
-apt install -y build-essential xorg libimlib2-dev git curl
+apt install -y build-essential xorg libimlib2-dev libx11-dev libxft-dev libxinerama-dev git curl
 
 echo "Setting up zsh..."
 apt install -y zsh tmux
@@ -23,7 +23,7 @@ git clone https://github.com/SushiWaUmai/dotfiles.git --recursive
 cd dotfiles
 
 echo "Installing Tools..."
-apt install -y pcmanfm scrot xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx bat exa
+apt install -y thunar flameshot xwallpaper picom autorandr xclip alacritty udiskie rofi numlockx
 
 echo "Compiling and Installing Suckless Tools..."
 make -C ./suckless/chadwm clean install

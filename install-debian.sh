@@ -23,7 +23,7 @@ git clone https://github.com/SushiWaUmai/dotfiles.git --recursive
 cd dotfiles
 
 echo "Installing Tools..."
-apt install -y thunar flameshot xwallpaper picom autorandr xclip alacritty udiskie rofi numlockx
+apt install -y thunar flameshot xwallpaper picom xclip alacritty udiskie rofi numlockx
 
 echo "Compiling and Installing Suckless Tools..."
 make -C ./suckless/chadwm clean install

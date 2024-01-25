@@ -28,11 +28,6 @@ static const int          horizpadtabo             = 15;
 static const int          scalepreview             = 4;
 static const int          tag_preview              = 1; /* 1 means enable, 0 is off */
 static const int          colorfultag              = 1; /* 0 means use SchemeSel for selected non vacant tag */
-static const char        *upvol[]                  = {"/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL};
-static const char        *downvol[]                = {"/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL};
-static const char        *mutevol[]                = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
-static const char        *light_up[]               = {"brightnessctl", "set", "5%+", NULL};
-static const char        *light_down[]             = {"brightnessctl", "set", "5%-", NULL};
 static const int          new_window_attach_on_end = 0; /*  1 means the new window will attach on the end; 0 means the new window will attach on the front,default is front */
 #define ICONSIZE    19                                  /* icon size */
 #define ICONSPACING 8                                   /* space between icon and title */
@@ -65,7 +60,7 @@ static const char *colors[][3] = {
 static char *tags[] = {"󰆍", "󰖟", "󰚢", "", "󰒋"};
 
 static const char *neofetch[]    = {"alacritty", "--hold", "-e", "neofetch", NULL};
-static const char *filemanager[] = {"thunar", "~", NULL};
+static const char *filemanager[] = {"thunar", NULL};
 
 static const Launcher launchers[] = {
   /* command     name to display */
@@ -146,19 +141,18 @@ static const Key keys[] = {
   /* modifier                         key         function        argument */
 
   // brightness and audio
-    {0,                                XF86XK_AudioLowerVolume,  spawn,          {.v = downvol}               },
-    {0,                                XF86XK_AudioMute,         spawn,          {.v = mutevol}               },
-    {0,                                XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol}                 },
-    {0,                                XF86XK_MonBrightnessUp,   spawn,          {.v = light_up}              },
-    {0,                                XF86XK_MonBrightnessDown, spawn,          {.v = light_down}            },
+    // {0,                                XF86XK_AudioLowerVolume,  spawn,          {.v = downvol}               },
+    // {0,                                XF86XK_AudioMute,         spawn,          {.v = mutevol}               },
+    // {0,                                XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol}                 },
+    // {0,                                XF86XK_MonBrightnessUp,   spawn,          {.v = light_up}              },
+    // {0,                                XF86XK_MonBrightnessDown, spawn,          {.v = light_down}            },
 
  // screenshot fullscreen and cropped
-    {MODKEY | ShiftMask,               XK_s,                     spawn,          SHCMD("~/.dwm/screensnap.sh")},
-    {MODKEY,                           XK_s,                     spawn,          SHCMD("~/.dwm/screenshot.sh")},
+  //  {MODKEY | ShiftMask,               XK_s,                     spawn,          SHCMD("~/.dwm/screensnap.sh")},
+  // {MODKEY,                           XK_s,                     spawn,          SHCMD("~/.dwm/screenshot.sh")},
 
     {MODKEY,                           XK_p,                     spawn,          SHCMD("rofi -show drun")     },
     {MODKEY,                           XK_n,                     spawn,          SHCMD("alacritty")           },
-    // {MODKEY | ShiftMask,               XK_l,                     spawn,          SHCMD("dm-tool lock")        },
 
  // toggle stuff
     {MODKEY,                           XK_b,                     togglebar,      {0}                          },
@@ -236,7 +230,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask,               XK_w,                     setborderpx,    {.i = default_border}        },
 
  // kill dwm
-    {MODKEY | ShiftMask,               XK_q,                     spawn,          SHCMD("killall slstatus dwm")},
+    {MODKEY | ShiftMask,               XK_q,                     spawn,          SHCMD("killall dwm")},
 
  // kill window
     {MODKEY,                           XK_q,                     killclient,     {0}                          },

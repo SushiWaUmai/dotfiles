@@ -16,9 +16,9 @@ pacman -S git curl --noconfirm
 
 
 echo "Setting up zsh..."
-pacman -S zsh tmux --noconfirm
+pacman -S zsh --noconfirm
 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+git clone https://github.com/jandamm/zgenom.git "/home/$USER/.zgenom"
 
 
 echo "Cloning dotfiles..."
@@ -27,12 +27,11 @@ cd dotfiles
 
 
 echo "Installing Tools..."
-pacman -S pcmanfm shotgun xwallpaper picom autorandr xclip alacritty neovim rofi lxsession-gtk3 numlockx bat exa --noconfirm
+pacman -S thunar flameshot xwallpaper picom autorandr xclip alacritty rofi numlockx --noconfirm
 
 
-echo "Compiling and Installing Suckless Tools..."
-make -C ./suckless/chadwm clean install
-make -C ./suckless/slstatus clean install
+echo "Compiling and Installing dwm..."
+make -C ./chadwm clean install
 
 
 echo "Copying Configurations..."
@@ -42,4 +41,3 @@ cp -R ./.wallpaper /home/$USER/
 cp -R ./.librewolf/home/$USER/
 cp ./.xinitrc /home/$USER/
 cp ./.zshrc /home/$USER/
-cp ./.tmux.conf /home/$USER/
